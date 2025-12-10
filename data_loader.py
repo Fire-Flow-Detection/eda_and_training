@@ -6,7 +6,7 @@ import rasterio
 import tensorflow as tf
 from typing import Literal, Optional
 from google.cloud import storage
-from config import EXPECTED_BANDS, EXPECTED_WIDTH, EXPECTED_HEIGHT
+from configs.data_config import EXPECTED_BANDS, EXPECTED_WIDTH, EXPECTED_HEIGHT
 
 # def get_year_from_blob(blob_name):
 #     """
@@ -40,10 +40,6 @@ def collect_paths(source_dir:str,
                     paths.append(full_path)
     print(f"{mode}: found {len(paths)} tif files")
     return sorted(paths)
-
-# def smart_crop(sample):
-#     print(sample)
-#     pass
 
 def validate_dimensions(sample, height, width, bands):
     if height < EXPECTED_HEIGHT:

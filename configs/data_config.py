@@ -2,6 +2,8 @@
 # DATA CONFIGURATION
 # ============================================
 
+DATA_DIR = "gs://firespreadpredictiontest/processed_data/bc_wildfire"
+
 ALL_YEARS = ['2012',
             '2013',
             '2014',

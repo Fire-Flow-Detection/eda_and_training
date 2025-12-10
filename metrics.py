@@ -1,5 +1,5 @@
 # Metrics copied from the assessment matrix section of the notebook, which
-# Nova authored. Thanks Nova!
+# Nova authored. Thanks, Nova!
 
 import tensorflow as tf
 

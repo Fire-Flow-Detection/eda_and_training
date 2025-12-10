@@ -8,3 +8,5 @@ torch==2.9.0+cu126
 torchvision
 torchaudio
 --extra-index-url https://download.pytorch.org/whl/cu126
+tensorflow==2.16.2
+tensorflow-gpu==2.16.2
