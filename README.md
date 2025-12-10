@@ -1,0 +1,1 @@
+The notebook at the forefront of this repository, Processing_and_EDA, contains the bulk of the work done to process data, create data loaders, and initially experiment with models. This notebook was refactored into the various python files the repository also contains in order to facilitate easier experiments with the aforementioned models.
