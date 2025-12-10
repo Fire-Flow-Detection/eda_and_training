@@ -59,8 +59,10 @@ def validate_dimensions(sample, height, width, bands):
     return sample
 
 def img_from_path(path:str):
-    if not isinstance(path, str):
-        return None, None
+    if hasattr(path, 'numpy'):  # It's a TensorFlow tensor
+        path = path.numpy()
+    if isinstance(path, bytes):
+        path = path.decode('utf-8')
     with rasterio.open(path) as src:
         item = src.read().astype("float32")
         item[~np.isfinite(item)] = 0.0
@@ -76,10 +78,10 @@ def img_from_path(path:str):
                 break
         if label_idx is None:
             raise ValueError(f"No 'label' band found in {path}. Bands: {item_bands}")
-        x = np.delete(item, label_idx, axis=0)
-        y = item[label_idx, :, :]
-        x = x.transpose(1, 2, 0).astype("float32")
-        y = y.transpose(1, 2, 0).astype("float32")
+        features = np.delete(item, label_idx, axis=0)
+        label = item[label_idx, :, :]
+        x = features.transpose(1, 2, 0).astype("float32")
+        y = np.expand_dims(label, axis=-1).astype("float32")
         y = (y > 0).astype("float32")
         return x, y
 
@@ -88,10 +90,12 @@ def load_tif_tf(path):
     Wrapper for tf.data: path (string tensor) → (x, y)
     """
     x, y = tf.py_function(img_from_path, [path], [tf.float32, tf.float32])
+    x.set_shape([None, None, None])
+    y.set_shape([None, None, 1])
     return x, y
 
 def make_dataset(source_dir, mode: Literal["train", "val", "test"],
-                 batch_size=8, shuffle=True):
+                 batching = True, batch_size=8, shuffle=True):
     """
     Create tf.data.Dataset for train / val / test.
     """
@@ -100,5 +104,8 @@ def make_dataset(source_dir, mode: Literal["train", "val", "test"],
     if shuffle:
         ds = ds.shuffle(len(paths))
     ds = ds.map(load_tif_tf, num_parallel_calls=tf.data.AUTOTUNE)
-    ds = ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+    if batching:
+        ds = ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+    else:
+        ds = ds.prefetch(tf.data.AUTOTUNE)
     return ds
