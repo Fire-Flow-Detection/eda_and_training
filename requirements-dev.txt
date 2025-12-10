@@ -1,0 +1,10 @@
+google-cloud-storage
+numpy
+pandas
+rasterio
+tqdm
+matplotlib
+torch==2.9.0+cu126
+torchvision
+torchaudio
+--extra-index-url https://download.pytorch.org/whl/cu126
