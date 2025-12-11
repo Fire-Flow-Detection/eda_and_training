@@ -110,7 +110,7 @@ Example:
 
 ```bash
 jupyter notebook eda/band_visualization.ipynb
-
+```
 
 ### Model Training Pipeline
 1. Install dependencies
