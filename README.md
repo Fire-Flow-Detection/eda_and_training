@@ -35,33 +35,34 @@ The goal is to evaluate multiple model architectures and identify the best-perfo
 
 eda_and_training/
 ├── eda/
-│   ├── band_visualization.ipynb
-│   ├── class_distribution.ipynb
-│   ├── spatial_examples.ipynb
+│   ├── band_visualization.ipynb        # Inspect 18-band TIFF structure
+│   ├── class_distribution.ipynb        # Fire mask distribution analysis
+│   ├── spatial_examples.ipynb          # Visual examples of patches
 │   └── temporal_analysis.ipynb
 │
 ├── loaders/
-│   ├── dataset_loader.py
-│   └── augmentations.py
+│   ├── dataset_loader.py               # tf.data pipelines for GeoTIFF loading
+│   └── augmentations.py                # Random flips/rotations for training
 │
 ├── models/
-│   ├── cnn_baseline.py
-│   ├── unet.py
-│   └── transfer_unet.py
+│   ├── cnn_baseline.py                 # Simple CNN
+│   ├── unet.py                         # U-Net architecture
+│   └── transfer_unet.py                # Transfer learning variant
 │
 ├── training/
-│   ├── train.py
-│   ├── metrics.py
-│   ├── loss_functions.py
-│   └── callbacks.py
+│   ├── train.py                        # Main training loop
+│   ├── metrics.py                      # IoU / Dice / Accuracy metrics
+│   ├── loss_functions.py               # Custom loss for segmentation
+│   └── callbacks.py                    # Checkpoints, LR schedulers, logging
 │
 ├── experiments/
-│   ├── experiment_1_cnn/
+│   ├── experiment_1_cnn/               # Saved logs / weights
 │   ├── experiment_2_unet/
 │   └── experiment_3_transfer/
 │
 ├── requirements.txt
 └── README.md
+
 
 
 ---
