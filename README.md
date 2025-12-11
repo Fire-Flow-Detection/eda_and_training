@@ -137,43 +137,35 @@ Training logs (IoU, Dice, accuracy)
 Comparison plots for all experiments
 
 ### Model Architectures
-Baseline CNN
+* Baseline CNN
 
-Fast to train
+1.Fast to train
+2.Lower accuracy, used for benchmarking
 
-Lower accuracy, used for benchmarking
+* U-Net
 
-U-Net
+1.Encoder-decoder segmentation model
+2.Higher IoU and Dice scores
+3.Best-performing model in experiments
 
-Encoder-decoder segmentation model
+* Transfer Learning U-Net
 
-Higher IoU and Dice scores
-
-Best-performing model in experiments
-
-Transfer Learning U-Net
-
-Pretrained encoder on satellite imagery
-
-Improved generalization on small datasets
+1.Pretrained encoder on satellite imagery
+2.Improved generalization on small datasets
 
 ### Metrics
 
 This project evaluates:
 
-IoU (Intersection over Union)
-
-Dice Score
-
-Binary accuracy
-
-Precision & Recall
+* IoU
+* Dice Score
+* Binary accuracy
+* Precision & Recall
 
 Custom loss functions include:
 
-Dice Loss
-
-BCE + Dice hybrid
+* Dice Loss
+* BCE + Dice hybrid
 
 ## Acknowledgements
 
