@@ -33,6 +33,7 @@ The goal is to evaluate multiple model architectures and identify the best-perfo
 
 ## Repository Structure
 
+``` text
 eda_and_training/
 ├── eda/
 │   ├── band_visualization.ipynb        # Inspect 18-band TIFF structure
@@ -62,7 +63,7 @@ eda_and_training/
 │
 ├── requirements.txt
 └── README.md
-
+```
 
 
 ---
@@ -84,6 +85,7 @@ test/
 
 Example directory structure:
 
+```text
 processed_data/
 ├── train/
 │ ├── sample_00001.tif
@@ -91,7 +93,7 @@ processed_data/
 │ └── ...
 ├── val/
 └── test/
-
+```
 
 ---
 
